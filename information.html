@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        });
+    }
+</script>
+</head>
+<body>
+    <div class="container">
+        <h1>RA App</h1>
+        <div class="option-list">
+            <a href="forms.html" class="option color-1">
+                <div class="option-content">
+                    <h2>Information</h2><br><br>
+                  <h3>We are coming soon with this page.</h3>
+                </div>
+            </a>
+</div>
+</div>  
+         <div class="back-button">
+            <a href="index.html" class="button">&larr;</a>
+        </div>
+</body>
+</html>

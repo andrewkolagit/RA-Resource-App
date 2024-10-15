@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA App - Health and Safety Inspection Forms</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        });
+    }
+</script>
+</head>
+<body>
+    <div class="container">
+        <h1>Health and Safety<br>Inspection Forms</h1>
+        <div class="option-list">
+            <a href="https://app.smartsheet.com/b/form/3692d723a2014764bd5171877a1ea538" class="option color-1">
+                <div class="option-content">
+                    <h2>The Courtyards</h2>
+                </div>
+            </a>
+            <a href="https://app.smartsheet.com/b/form/ac7b354aa869487d85680682d9a0e604" class="option color-2">
+                <div class="option-content">
+                    <h2>Warhawk Hall</h2>
+                </div>
+            </a>
+            <a href="https://app.smartsheet.com/b/form/5558df984b6e4b9aa90168538a011e74" class="option color-3">
+                <div class="option-content">
+                    <h2>The Commons</h2>
+                </div>
+            </a>
+            <a href="https://app.smartsheet.com/b/form/3a33be8b29f141b9a64b00aeea6b8070" class="option color-4">
+                <div class="option-content">
+                    <h2>P-40</h2>
+                </div>
+            </a>
+            <!-- Repeat options with same color classes as needed -->
+        </div>
+    </div>
+  
+         <div class="back-button">
+            <a href="forms.html" class="button">&larr;</a>
+        </div>
+</body>
+</html>

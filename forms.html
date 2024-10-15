@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA App - Forms</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        });
+    }
+</script>
+</head>
+<body>
+    <div class="container">
+        <h1>FORMS</h1>
+        <div class="option-list">
+            <a href="https://app.smartsheet.com/b/form/5fc1445f7a8a43668ae2112e7ded57ae" class="option color-1">
+                <div class="option-content">
+                    <h2>Vacancy Checks Forms</h2>
+                </div>
+            </a>
+            <a href="https://app.smartsheet.com/b/form/259fd614f83e4c3eb7bb7c947018ae63" class="option color-2">
+                <div class="option-content">
+                    <h2>Rent Ready Forms</h2>
+                </div>
+            </a>
+            <a href="health.html" class="option color-3">
+                <div class="option-content">
+                    <h2>Health and Safety Inspection Forms</h2>
+                </div>
+            </a>
+            <a href="https://app.smartsheet.com/b/form/4c72e5d3ea0b47f5a06a715729b406ff" class="option color-4">
+                <div class="option-content">
+                    <h2>Maintenance Requests</h2>
+                </div>
+            </a>
+            <a href="https://app.smartsheet.com/b/form/e4b3157415d045118c5f80d04b256a54" class="option color-5">
+                <div class="option-content">
+                    <h2>RA Time Off Request</h2>
+                </div>
+            </a>
+            <a href="https://app.smartsheet.com/b/form/e7f6798063c14cf9a19502f425f4ea09" class="option color-1">
+                <div class="option-content">
+                    <h2>Lockout Form</h2>
+                </div>
+            </a>
+            <a href="https://app.smartsheet.com/b/form/3be370ba12b14142ba819f8119e0ead8?confirm=true" class="option color-2">
+                <div class="option-content">
+                    <h2>Duty Report</h2>
+                </div>
+            </a>
+            <a href="https://cm.maxient.com/reportingform.php?AUMontgomery&layout_id=4" class="option color-3">
+                <div class="option-content">
+                    <h2>Incident Report</h2>
+                </div>
+            </a>
+            <!-- Repeat options with same color classes as needed -->
+        </div>
+    </div>
+         <div class="back-button">
+            <a href="index.html" class="button">&larr;</a>
+        </div>
+</body>
+</html>

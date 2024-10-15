@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        });
+    }
+</script>
+</head>
+<body>
+    <div class="container">
+        <h1>RA App</h1>
+        <div class="option-list">
+            <a href="forms.html" class="option color-1">
+                <div class="option-content">
+                    <h2>FORMS</h2>
+                </div>
+            </a>
+            <a href="information.html" class="option color-2">
+                <div class="option-content">
+                    <h2>ESSENTIAL INFORMATION</h2>
+                </div>
+            </a>
+            <a href="https://app.smartsheet.com/b/form/e7f6798063c14cf9a19502f425f4ea09" class="option color-4">
+                <div class="option-content">
+                    <h2>LOCKOUT FORM</h2>
+                </div>
+            </a>
+            <a href="https://app.smartsheet.com/b/form/3be370ba12b14142ba819f8119e0ead8?confirm=true" class="option color-3">
+                <div class="option-content">
+                    <h2>DUTY REPORT</h2>
+                </div>
+            </a>
+            <a href="https://cm.maxient.com/reportingform.php?AUMontgomery&layout_id=4" class="option color-5">
+                <div class="option-content">
+                    <h2>INCIDENT REPORT</h2>
+                </div>
+            </a>
+            <a href="Weekly Housing Roster for Staff 2024-10-14 08-00-31.csv" class="option color-6" download="Weekly Housing Roster for Staff 2024-10-14 08-00-31.csv">
+                <div class="option-content">
+                    <h2>DOWNLOAD LATEST STARREZ</h2>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
