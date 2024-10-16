@@ -9,6 +9,14 @@ body {
     background: url('images/back 2.jpg') no-repeat center center fixed;
     background-size: cover;
     padding: 20px;
+    min-height: 100vh; /* Ensure the background covers the full height */
+}
+
+/* Add this media query for mobile devices */
+@media only screen and (max-width: 768px) {
+    body {
+        background-attachment: scroll; /* This ensures compatibility with mobile */
+    }
 }
 
 .container {
