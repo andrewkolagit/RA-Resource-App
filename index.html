@@ -6,19 +6,19 @@
     <title>RA App</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('service-worker.js')
-                .then(registration => {
-                    console.log('Service Worker registered with scope:', registration.scope);
-                })
-                .catch(error => {
-                    console.error('Service Worker registration failed:', error);
-                });
-        });
-    }
-</script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -54,7 +54,30 @@
                     <h2>DOWNLOAD LATEST STARREZ</h2>
                 </div>
             </a>
+	    <a href="Fall 2024 Duty Calendar.pdf" class="option color-1" download="Fall 2024 Duty Calendar.pdf">
+                <div class="option-content">
+                    <h2>DUTY SCHEDULE</h2>
+                </div>
+            </a>
         </div>
+    </div>
+
+    <!-- Gap before the next container -->
+    <div class="spacer"></div>
+
+    <!-- Emergency Contacts Container -->
+    <div class="container emergency-container">
+        <h1>Emergency Contacts</h1>
+        <p>If there is an emergency, please contact the following:</p>
+        <h3><a href="tel:+13343183170" style="color: #A8E600;">CY/WH Duty Phone: +13343183170</a></h3>
+        <h3><a href="tel:+13343183171" style="color: #A8E600;">NC/P-40 Duty Phone: +13343183171</a></h3>
+        <h3><a href="tel:+13342443424" style="color: #A8E600;">Campus Police: +13342443424</a></h3>
+        <br>
+        <h1>RLCs</h1>
+        <h3><a href="tel:+13343203385" style="color: #A8E600;">Ram: +13343203385</a></h3>
+        <h3><a href="tel:+1332355208" style="color: #A8E600;">Amberly: +1332355208</a></h3>
+        <h3><a href="tel:+1332243791" style="color: #A8E600;">Lauryn: +1332243791</a></h3>
+        <h3><a href="tel:+13343003269" style="color: #A8E600;">Taylor: +13343003269</a></h3>
     </div>
 </body>
 </html>
