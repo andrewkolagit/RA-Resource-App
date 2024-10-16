@@ -20,8 +20,8 @@ body {
     border-radius: 20px;
     backdrop-filter: blur(7px); /* Adds a blur effect */
     -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
+    margin-bottom: 10px; /* Added margin-bottom to create space between containers */
 }
-
 
 h1 {
     margin-bottom: 20px;
@@ -48,6 +48,34 @@ h1 {
 
 .option:hover {
     transform: translateY(-5px);
+}
+
+/* Spacer between containers */
+.spacer {
+    height: 20px;
+}
+
+/* Emergency container specific styling */
+.emergency-container {
+    background-color: #444444; /* Solid dark gray background */
+    color: #ffffff; /* White text for all text inside the container */
+    padding: 20px;
+    border-radius: 20px; /* Optional: rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional: shadow for depth */
+}
+
+.emergency-container h1 {
+    color: #ffffff; /* Light lime green */
+}
+
+.emergency-container h3 {
+    color: #A8E600; /* Light lime green */
+    margin-bottom: 10px; /* Add gap between phone numbers */
+}
+
+.emergency-container p {
+    color: #ffffff; /* White text */
+    margin-bottom: 10px;
 }
 
 /* Color classes */
