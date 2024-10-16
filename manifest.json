@@ -1,6 +1,6 @@
 {
-    "name": "RA App",
-    "short_name": "RA App",
+    "name": "RA Help App",
+    "short_name": "RA Help App",
     "start_url": "index.html",
     "display": "standalone",
     "background_color": "#ffffff",
