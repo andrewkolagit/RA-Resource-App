@@ -78,6 +78,15 @@ h1 {
     margin-bottom: 10px;
 }
 
+.emergency-container a {
+    text-decoration: none; /* Removes the underline */
+}
+
+.emergency-container a:hover {
+    text-decoration: underline; /* Optional: Adds underline on hover */
+    color: #A8E600; /* Keeps the hover color consistent */
+}
+
 /* Color classes */
 .color-1 h2 {
     color: #FF5733; /* Bright Orange */
