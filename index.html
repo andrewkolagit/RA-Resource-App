@@ -21,6 +21,19 @@
     </script>
 </head>
 <body>
+    <div class="notification-container">
+        <span class="notification-bell" id="notificationBell">
+            🔔
+            <span class="notification-dot" id="notificationDot"></span> <!-- New Notification Dot -->
+        </span>
+        <div class="notification-dropdown" id="notificationDropdown">
+            <h3>Notifications</h3>
+            <ul id="notificationList">
+                <li>No new notifications</li>
+            </ul>
+        </div>
+    </div>
+
     <div class="container">
         <h1>RA HELP APP</h1>
         <div class="option-list">
@@ -59,7 +72,7 @@
                     <h2>NO ACCESS LIST</h2>
                 </div>
             </a>
-	    <a href="Fall 2024 Duty Calendar.pdf" class="option color-2" target="_blank">
+            <a href="Fall 2024 Duty Calendar.pdf" class="option color-2" target="_blank">
                 <div class="option-content">
                     <h2>DUTY SCHEDULE</h2>
                 </div>
@@ -67,10 +80,8 @@
         </div>
     </div>
 
-    <!-- Gap before the next container -->
     <div class="spacer"></div>
 
-    <!-- Emergency Contacts Container -->
     <div class="container emergency-container">
         <h1>Emergency Contacts</h1>
         <p>If there is an emergency, please contact the following:</p>
@@ -84,5 +95,80 @@
         <h3><a href="tel:+1332243791" style="color: #A8E600;">Lauryn: +1332243791</a></h3>
         <h3><a href="tel:+13343003269" style="color: #A8E600;">Taylor: +13343003269</a></h3>
     </div>
+
+    <script>
+        const notificationBell = document.getElementById('notificationBell');
+        const notificationDropdown = document.getElementById('notificationDropdown');
+        const notificationList = document.getElementById('notificationList');
+        const notificationDot = document.getElementById('notificationDot'); // Get the notification dot element
+
+        notificationBell.addEventListener('click', () => {
+            notificationDropdown.classList.toggle('show');
+            loadNotifications(); // Load notifications when bell is clicked
+            notificationDot.style.display = 'none'; // Hide dot when dropdown is opened
+        });
+
+        window.addEventListener('click', (event) => {
+            if (!event.target.matches('.notification-bell')) {
+                if (notificationDropdown.classList.contains('show')) {
+                    notificationDropdown.classList.remove('show');
+                }
+            }
+        });
+
+        async function fetchNotifications() {
+            const apiKey = 'patHsrrNu8CMXvlpA.debf08c28e5905ff5a415cdacb999abd2695b1559cb5f9feb22c84fb1310e428'; // Replace with your Airtable Personal Access Token
+            const baseId = 'appoXg3vvpfVAXmqH'; // Replace with your Airtable Base ID
+            const tableName = 'notifications'; // Name of your table
+            const url = `https://api.airtable.com/v0/${baseId}/${tableName}`;
+
+            const response = await fetch(url, {
+                headers: {
+                    Authorization: `Bearer ${apiKey}`
+                }
+            });
+
+            if (!response.ok) {
+                console.error('Error fetching data:', response.statusText);
+                return [];
+            }
+
+            const data = await response.json();
+            return data.records;
+        }
+
+        function filterNotifications(records) {
+            const currentTime = new Date();
+            const notificationsToShow = records.filter(record => {
+                const dateToPost = new Date(record.fields.date_to_post);
+                const dateToRemove = new Date(record.fields.date_to_remove);
+                return (currentTime >= dateToPost && currentTime < dateToRemove);
+            });
+
+            return notificationsToShow;
+        }
+
+        async function loadNotifications() {
+            const records = await fetchNotifications();
+            const notifications = filterNotifications(records);
+
+            notificationList.innerHTML = ''; // Clear existing notifications
+
+            if (notifications.length === 0) {
+                notificationList.innerHTML = '<li>No new notifications</li>';
+                notificationDot.style.display = 'none'; // Hide the dot if no notifications
+            } else {
+                notificationDot.style.display = 'block'; // Show the dot if there are notifications
+                notifications.forEach(notification => {
+                    const li = document.createElement('li');
+                    li.textContent = `Subject: "${notification.fields.subject}" - Message: "${notification.fields.message}"`;
+                    notificationList.appendChild(li);
+                });
+            }
+        }
+
+        // Polling every 10 seconds to fetch new notifications
+        setInterval(loadNotifications, 1000); // Fetch notifications every 10 seconds
+    </script>
 </body>
 </html>
