@@ -120,11 +120,11 @@
             const apiKey = 'patHsrrNu8CMXvlpA.debf08c28e5905ff5a415cdacb999abd2695b1559cb5f9feb22c84fb1310e428'; // Replace with your Airtable Personal Access Token
             const baseId = 'appoXg3vvpfVAXmqH'; // Replace with your Airtable Base ID
             const tableName = 'notifications'; // Name of your table
-            const url = https://api.airtable.com/v0/${baseId}/${tableName};
+            const url = `https://api.airtable.com/v0/${baseId}/${tableName}`;
 
             const response = await fetch(url, {
                 headers: {
-                    Authorization: Bearer ${apiKey}
+                    Authorization: `Bearer ${apiKey}`
                 }
             });
 
@@ -161,7 +161,7 @@
                 notificationDot.style.display = 'block'; // Show the dot if there are notifications
                 notifications.forEach(notification => {
                     const li = document.createElement('li');
-                    li.textContent = Subject: "${notification.fields.subject}" - Message: "${notification.fields.message}";
+                    li.textContent = `Subject: "${notification.fields.subject}" - Message: "${notification.fields.message}"`;
                     notificationList.appendChild(li);
                 });
             }
