@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: url('images/back 2.jpg') no-repeat center center fixed;
+    background: url('https://cdn.glitch.global/160497a2-e25b-488f-b4be-1cfc23962c6c/back%202.jpg?v=1729815618283') no-repeat center center fixed;
     background-size: cover;
     padding: 20px;
 }
@@ -15,16 +15,17 @@ body {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2); /* Slight transparency */
     padding: 20px;
     border-radius: 20px;
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(10px);
-    margin-bottom: 10px;
+    backdrop-filter: blur(7px); /* Adds a blur effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
+    margin-bottom: 10px; /* Added margin-bottom to create space between containers */
 }
 
-h1, h2, h3, p {
-    color: #ffffff; /* Set text color for all headers and paragraphs */
+h1 {
+    margin-bottom: 20px;
+    color: #ffffff;
 }
 
 .option-list {
@@ -35,11 +36,11 @@ h1, h2, h3, p {
 
 .option {
     display: block;
-    background-color: #333333;
+    background-color: #333333; /* Dark gray background */
     padding: 20px;
     border-radius: 50px;
     text-decoration: none;
-    color: #ffffff;
+    color: #ffffff; /* Keeps the text white (or inherit from the classes you've applied) */
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -49,105 +50,75 @@ h1, h2, h3, p {
     transform: translateY(-5px);
 }
 
+/* Spacer between containers */
+.spacer {
+    height: 20px;
+}
+
 /* Emergency container specific styling */
 .emergency-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #444444;
+    background-color: #444444; /* Solid dark gray background */
+    color: #ffffff; /* White text for all text inside the container */
     padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
-    margin: 20px auto; /* Center and space the container */
+    border-radius: 20px; /* Optional: rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional: shadow for depth */
 }
 
-.emergency-container h1,
-.emergency-container h3,
+.emergency-container h1 {
+    color: #ffffff; /* Light lime green */
+}
+
+.emergency-container h3 {
+    color: #A8E600; /* Light lime green */
+    margin-bottom: 10px; /* Add gap between phone numbers */
+}
+
 .emergency-container p {
-    text-align: center;
-    margin: 10px 0; /* Add vertical spacing between elements */
-}
-
-/* Duty Day specific styling */
-.duty-day-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #444444;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
-    margin: 20px auto; /* Center and space the container */
-}
-
-.duty-day-container h2,
-.duty-day-container h3,
-.duty-day-container ul li {
-    text-align: center;
-    margin: 10px 0; /* Add vertical spacing between elements */
-}
-
-.duty-day-container ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.duty-day-container ul li {
-    padding: 10px;
-    border-bottom: 1px solid #666666;
-    font-size: 14px;
-}
-
-.duty-day-container ul li:last-child {
-    border-bottom: none;
+    color: #ffffff; /* White text */
+    margin-bottom: 10px;
 }
 
 /* Color classes */
 .color-1 h2 {
-    color: #FF5733;
+    color: #FF5733; /* Bright Orange */
 }
 .color-1:hover {
-    box-shadow: 0 6px 12px rgba(255, 87, 51, 0.5);
+    box-shadow: 0 6px 12px rgba(255, 87, 51, 0.5); /* Orange shadow */
 }
 
 .color-2 h2 {
-    color: #33C4FF;
+    color: #33C4FF; /* Bright Blue */
 }
 .color-2:hover {
-    box-shadow: 0 6px 12px rgba(51, 196, 255, 0.5);
+    box-shadow: 0 6px 12px rgba(51, 196, 255, 0.5); /* Blue shadow */
 }
 
 .color-3 h2 {
-    color: #FF33A6;
+    color: #FF33A6; /* Bright Pink */
 }
 .color-3:hover {
-    box-shadow: 0 6px 12px rgba(255, 51, 166, 0.5);
+    box-shadow: 0 6px 12px rgba(255, 51, 166, 0.5); /* Pink shadow */
 }
 
 .color-4 h2 {
-    color: #33FF57;
+    color: #33FF57; /* Bright Green */
 }
 .color-4:hover {
-    box-shadow: 0 6px 12px rgba(51, 255, 87, 0.5);
+    box-shadow: 0 6px 12px rgba(51, 255, 87, 0.5); /* Green shadow */
 }
 
 .color-5 h2 {
-    color: #FFD700;
+    color: #FFD700; /* Bright Yellow */
 }
 .color-5:hover {
-    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5); /* Yellow shadow */
 }
 
 .color-6 h2 {
-    color: #8A2BE2;
+    color: #8A2BE2; /* Bright Purple */
 }
 .color-6:hover {
-    box-shadow: 0 6px 12px rgba(138, 43, 226, 0.5);
+    box-shadow: 0 6px 12px rgba(138, 43, 226, 0.5); /* Purple shadow */
 }
 
 /* Notification bell styling */
@@ -155,30 +126,30 @@ h1, h2, h3, p {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 100;
+    z-index: 100; /* Keep it above other elements */
 }
 
 .notification-bell {
-    font-size: 30px;
+    font-size: 30px; /* Adjust the size as needed */
     color: white;
     cursor: pointer;
-    position: relative;
+    position: relative; /* Position for the dot */
 }
 
 .notification-bell:hover {
-    color: #FFD700;
+    color: #FFD700; /* Gold color on hover */
 }
 
 /* Red dot for new notifications */
 .notification-dot {
     position: absolute;
-    top: -5px;
-    right: -10px;
-    width: 12px;
-    height: 12px;
-    background-color: red;
-    border-radius: 50%;
-    display: none;
+    top: -5px; /* Adjusts the position of the dot */
+    right: -10px; /* Adjusts the position of the dot */
+    width: 12px; /* Dot width */
+    height: 12px; /* Dot height */
+    background-color: red; /* Dot color */
+    border-radius: 50%; /* Makes the dot circular */
+    display: none; /* Hidden by default */
 }
 
 /* Notification dropdown */
@@ -227,27 +198,4 @@ h1, h2, h3, p {
 .notification-dropdown ul li:hover {
     background-color: #555555;
     cursor: pointer;
-}
-
-.back-button {
-    text-align: left;
-    margin: 20px;
-}
-
-.back-button .button {
-    display: inline-block;
-    padding: 10px 15px;
-    font-size: 20px;
-    color: #ffffff;
-    background-color: #333333;
-    text-decoration: none;
-    border-radius: 50px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-}
-
-.back-button .button:hover {
-    background-color: #FFD700;
-    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
-    transform: translateY(-3px);
 }
