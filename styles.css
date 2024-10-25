@@ -67,10 +67,17 @@ h1 {
 .emergency-container h1 {
     color: #ffffff; /* Light lime green */
 }
+.duty-day-container b {
+    color: #A8E600; /* Light lime green */
+}
 
 .emergency-container h3 {
     color: #A8E600; /* Light lime green */
     margin-bottom: 10px; /* Add gap between phone numbers */
+}
+
+.duty-day-container h3 {
+    font-size: 17px;
 }
 
 .emergency-container p {
