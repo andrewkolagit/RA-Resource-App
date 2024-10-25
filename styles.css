@@ -6,17 +6,9 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: url('images/back 2.jpg') no-repeat center center fixed;
+    background: url('images/back2.jpg') no-repeat center center fixed;
     background-size: cover;
     padding: 20px;
-    min-height: 100vh; /* Ensure the background covers the full height */
-}
-
-/* Add this media query for mobile devices */
-@media only screen and (max-width: 768px) {
-    body {
-        background-attachment: scroll; /* This ensures compatibility with mobile */
-    }
 }
 
 .container {
@@ -86,15 +78,6 @@ h1 {
     margin-bottom: 10px;
 }
 
-.emergency-container a {
-    text-decoration: none; /* Removes the underline */
-}
-
-.emergency-container a:hover {
-    text-decoration: underline; /* Optional: Adds underline on hover */
-    color: #A8E600; /* Keeps the hover color consistent */
-}
-
 /* Color classes */
 .color-1 h2 {
     color: #FF5733; /* Bright Orange */
@@ -111,48 +94,108 @@ h1 {
 }
 
 .color-3 h2 {
-    color: #33FF77; /* Bright Green */
+    color: #FF33A6; /* Bright Pink */
 }
 .color-3:hover {
-    box-shadow: 0 6px 12px rgba(51, 255, 119, 0.5); /* Green shadow */
+    box-shadow: 0 6px 12px rgba(255, 51, 166, 0.5); /* Pink shadow */
 }
 
 .color-4 h2 {
-    color: #FF33A8; /* Bright Pink */
+    color: #33FF57; /* Bright Green */
 }
 .color-4:hover {
-    box-shadow: 0 6px 12px rgba(255, 51, 168, 0.5); /* Pink shadow */
+    box-shadow: 0 6px 12px rgba(51, 255, 87, 0.5); /* Green shadow */
 }
 
 .color-5 h2 {
-    color: #FFD633; /* Bright Yellow */
+    color: #FFD700; /* Bright Yellow */
 }
 .color-5:hover {
-    box-shadow: 0 6px 12px rgba(255, 214, 51, 0.5); /* Yellow shadow */
+    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5); /* Yellow shadow */
 }
 
 .color-6 h2 {
-    color: #B833FF; /* Bright Purple */
+    color: #8A2BE2; /* Bright Purple */
 }
 .color-6:hover {
-    box-shadow: 0 6px 12px rgba(184, 51, 255, 0.5); /* Purple shadow */
+    box-shadow: 0 6px 12px rgba(138, 43, 226, 0.5); /* Purple shadow */
 }
 
-.back-button {
-    margin-top: 30px;
+/* Notification bell styling */
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100; /* Keep it above other elements */
 }
 
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #333333; /* Dark gray */
-    color: #ffffff; /* White text */
+.notification-bell {
+    font-size: 30px; /* Adjust the size as needed */
+    color: white;
+    cursor: pointer;
+    position: relative; /* Position for the dot */
+}
+
+.notification-bell:hover {
+    color: #FFD700; /* Gold color on hover */
+}
+
+/* Red dot for new notifications */
+.notification-dot {
+    position: absolute;
+    top: -5px; /* Adjusts the position of the dot */
+    right: -10px; /* Adjusts the position of the dot */
+    width: 12px; /* Dot width */
+    height: 12px; /* Dot height */
+    background-color: red; /* Dot color */
+    border-radius: 50%; /* Makes the dot circular */
+    display: none; /* Hidden by default */
+}
+
+/* Notification dropdown */
+.notification-dropdown {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #444444;
+    color: white;
+    padding: 10px;
     border-radius: 5px;
-    text-decoration: none;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 250px;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
-.button:hover {
-    background-color: #555555; /* Lighter gray on hover */
+.notification-dropdown.show {
+    display: block;
+}
+
+.notification-dropdown h3 {
+    margin-top: 0;
+    font-size: 18px;
+    text-align: center;
+    color: #A8E600;
+}
+
+.notification-dropdown ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notification-dropdown ul li {
+    padding: 10px;
+    border-bottom: 1px solid #666666;
+    font-size: 14px;
+}
+
+.notification-dropdown ul li:last-child {
+    border-bottom: none;
+}
+
+.notification-dropdown ul li:hover {
+    background-color: #555555;
+    cursor: pointer;
 }
