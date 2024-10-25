@@ -122,11 +122,11 @@
             const apiKey = 'patHsrrNu8CMXvlpA.debf08c28e5905ff5a415cdacb999abd2695b1559cb5f9feb22c84fb1310e428'; // Replace with your Airtable Personal Access Token
             const baseId = 'appoXg3vvpfVAXmqH'; // Replace with your Airtable Base ID
             const tableName = 'notifications'; // Notifications - Name of your table
-            const url = `https://api.airtable.com/v0/${baseId}/${tableName}`;
+            const url = https://api.airtable.com/v0/${baseId}/${tableName};
 
             const response = await fetch(url, {
                 headers: {
-                    Authorization: `Bearer ${apiKey}`
+                    Authorization: Bearer ${apiKey}
                 }
             });
 
@@ -160,7 +160,7 @@
                 notificationDot.style.display = 'block';
                 notifications.forEach(notification => {
                     const li = document.createElement('li');
-                    li.textContent = `Subject: "${notification.fields.subject}" - Message: "${notification.fields.message}"`;
+                    li.textContent = Subject: "${notification.fields.subject}" - Message: "${notification.fields.message}";
                     notificationList.appendChild(li);
                 });
             }
@@ -178,46 +178,39 @@
                      (currentDay === 6 && currentHour >= 8) || 
                      (currentDay === 0 && currentHour < 8))) {
 
-                    dutyDayContainer.innerHTML = `
+                    dutyDayContainer.innerHTML = 
                         <h1>Duty Day</h1><br>
                         <p>Warhawk/Courtyards:</p> <br><p><h3><strong>${dutyData['warhawk/courtyards']}</strong></h3></p><br>
                         <p>Commons/P-40:</p> <br><p><h3><strong>${dutyData['commons/p-40']}</strong></h3></p><br>
                         <p>RLC:</p> <br><p><h3><strong>${dutyData['rlc']}</strong></h3></p>
-                    `;
+                    ;
                 } else if (currentDay >= 1 && currentDay <= 5 && currentHour < 8) {
-                    dutyDayContainer.innerHTML = `
+                    dutyDayContainer.innerHTML = 
                         <h1>Duty Day</h1>
                         <p>Will update at 5:00 PM.</p>
-                    `;
+                    ;
                 }
             });
         }
 
         async function fetchDutyDayDataFromAirtable() {
-            const apiKey = 'patHsrrNu8CMXvlpA.debf08c28e5905ff5a415cdacb999abd2695b1559cb5f9feb22c84fb1310e428'; // Replace with your Airtable Personal Access Token
+            const apiKey = 'patgvs2yNFvsy0nld.0cda1f2d1a51d3457f35d49b75ee6a8e05a9539a19583b80dc5e2c2c8ed121db'; // Replace with your Airtable Personal Access Token
             const baseId = 'appoXg3vvpfVAXmqH'; // Replace with your Airtable Base ID
-            const tableName = 'duty_day'; // Replace with your table name
-            const url = `https://api.airtable.com/v0/${baseId}/${tableName}`;
+            const tableName = 'dutyday'; // DutyDay - Name of your table
+            const url = https://api.airtable.com/v0/${baseId}/${tableName};
 
             const response = await fetch(url, {
                 headers: {
-                    Authorization: `Bearer ${apiKey}`
+                    Authorization: Bearer ${apiKey}
                 }
             });
 
-            if (!response.ok) {
-                console.error('Error fetching duty day data:', response.statusText);
-                return {};
-            }
-
             const data = await response.json();
-            return data.records[0].fields; // Assuming you want the first record
+            return data.records[0].fields; 
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            loadDutyDayData();
-            loadNotifications();
-        });
+        loadDutyDayData();
+        loadNotifications();
     </script>
 </body>
 </html>
