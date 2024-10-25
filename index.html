@@ -24,7 +24,7 @@
     <div class="notification-container">
         <span class="notification-bell" id="notificationBell">
             🔔
-            <span class="notification-dot" id="notificationDot"></span>
+            <span class="notification-dot" id="notificationDot"></span> <!-- New Notification Dot -->
         </span>
         <div class="notification-dropdown" id="notificationDropdown">
             <h3>Notifications</h3>
@@ -96,18 +96,16 @@
         <h3><a href="tel:+13343003269" style="color: #A8E600;">Taylor: +13343003269</a></h3>
     </div>
 
-    <div id="dutyDayContainer" class="duty-day-container"></div>
-
     <script>
         const notificationBell = document.getElementById('notificationBell');
         const notificationDropdown = document.getElementById('notificationDropdown');
         const notificationList = document.getElementById('notificationList');
-        const notificationDot = document.getElementById('notificationDot');
+        const notificationDot = document.getElementById('notificationDot'); // Get the notification dot element
 
         notificationBell.addEventListener('click', () => {
             notificationDropdown.classList.toggle('show');
-            loadNotifications();
-            notificationDot.style.display = 'none';
+            loadNotifications(); // Load notifications when bell is clicked
+            notificationDot.style.display = 'none'; // Hide dot when dropdown is opened
         });
 
         window.addEventListener('click', (event) => {
@@ -119,9 +117,9 @@
         });
 
         async function fetchNotifications() {
-            const apiKey = 'patHsrrNu8CMXvlpA.debf08c28e5905ff5a415cdacb999abd2695b1559cb5f9feb22c84fb1310e428'; // Replace with your Airtable Personal Access Token
-            const baseId = 'appoXg3vvpfVAXmqH'; // Replace with your Airtable Base ID
-            const tableName = 'notifications'; // Notifications - Name of your table
+            const apiKey = ''; // Replace with your Airtable Personal Access Token
+            const baseId = ''; // Replace with your Airtable Base ID
+            const tableName = ''; // Name of your table
             const url = https://api.airtable.com/v0/${baseId}/${tableName};
 
             const response = await fetch(url, {
@@ -141,23 +139,26 @@
 
         function filterNotifications(records) {
             const currentTime = new Date();
-            return records.filter(record => {
+            const notificationsToShow = records.filter(record => {
                 const dateToPost = new Date(record.fields.date_to_post);
                 const dateToRemove = new Date(record.fields.date_to_remove);
                 return (currentTime >= dateToPost && currentTime < dateToRemove);
             });
+
+            return notificationsToShow;
         }
 
         async function loadNotifications() {
             const records = await fetchNotifications();
             const notifications = filterNotifications(records);
 
-            notificationList.innerHTML = '';
+            notificationList.innerHTML = ''; // Clear existing notifications
+
             if (notifications.length === 0) {
                 notificationList.innerHTML = '<li>No new notifications</li>';
-                notificationDot.style.display = 'none';
+                notificationDot.style.display = 'none'; // Hide the dot if no notifications
             } else {
-                notificationDot.style.display = 'block';
+                notificationDot.style.display = 'block'; // Show the dot if there are notifications
                 notifications.forEach(notification => {
                     const li = document.createElement('li');
                     li.textContent = Subject: "${notification.fields.subject}" - Message: "${notification.fields.message}";
@@ -166,51 +167,8 @@
             }
         }
 
-        function loadDutyDayData() {
-            const dutyDayContainer = document.getElementById("dutyDayContainer");
-            const currentDate = new Date();
-            const currentDay = currentDate.getDay();
-            const currentHour = currentDate.getHours();
-
-            fetchDutyDayDataFromAirtable().then(dutyData => {
-                if ((currentDay >= 1 && currentDay <= 5 && currentHour >= 17) ||
-                    ((currentDay === 0 && currentHour >= 8) || 
-                     (currentDay === 6 && currentHour >= 8) || 
-                     (currentDay === 0 && currentHour < 8))) {
-
-                    dutyDayContainer.innerHTML += 
-                        <h1>Duty Day</h1><br>
-                        <p>Warhawk/Courtyards:</p> <br><p><h3><strong>${dutyData['warhawk/courtyards']}</strong></h3></p><br>
-                        <p>Commons/P-40:</p> <br><p><h3><strong>${dutyData['commons/p-40']}</strong></h3></p><br>
-                        <p>RLC:</p> <br><p><h3><strong>${dutyData['rlc']}</strong></h3></p>
-                    ;
-                } else if (currentDay >= 1 && currentDay <= 5 && currentHour < 8) {
-                    dutyDayContainer.innerHTML = 
-                        <h1>Duty Day</h1>
-                        <p>Will update at 5:00 PM.</p>
-                    ;
-                }
-            });
-        }
-
-        async function fetchDutyDayDataFromAirtable() {
-            const apiKey = 'patgvs2yNFvsy0nld.0cda1f2d1a51d3457f35d49b75ee6a8e05a9539a19583b80dc5e2c2c8ed121db'; // Replace with your Airtable Personal Access Token
-            const baseId = 'appoXg3vvpfVAXmqH'; // Replace with your Airtable Base ID
-            const tableName = 'dutyday'; // DutyDay - Name of your table
-            const url = https://api.airtable.com/v0/${baseId}/${tableName};
-
-            const response = await fetch(url, {
-                headers: {
-                    Authorization: Bearer ${apiKey}
-                }
-            });
-
-            const data = await response.json();
-            return data.records[0].fields; 
-        }
-
-        loadDutyDayData();
-        loadNotifications();
+        // Polling every 10 seconds to fetch new notifications
+        setInterval(loadNotifications, 100); // Fetch notifications every 10 seconds
     </script>
 </body>
 </html>
