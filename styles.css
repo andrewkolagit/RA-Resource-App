@@ -55,33 +55,44 @@ h1 {
     height: 20px;
 }
 
-/* Emergency container and Duty Day container specific styling */
-.emergency-container, .duty-day-container {
+/* Emergency container specific styling */
+.emergency-container {
     background-color: #444444; /* Solid dark gray background */
     color: #ffffff; /* White text for all text inside the container */
     padding: 20px;
     border-radius: 20px; /* Optional: rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional: shadow for depth */
-    margin: 0 auto; /* Centers the container */
     max-width: 800px; /* Ensure it does not exceed the container width */
+    margin: 0 auto; /* Center the container */
 }
 
-.emergency-container h1, .duty-day-container h1 {
+.emergency-container h1 {
     color: #ffffff; /* Light lime green */
+    text-align: center; /* Center the heading text */
 }
 
-.emergency-container h3, .duty-day-container h3 {
+.emergency-container h3 {
     color: #A8E600; /* Light lime green */
     margin-bottom: 10px; /* Add gap between phone numbers */
 }
 
-.emergency-container p, .duty-day-container p {
+.emergency-container p {
     color: #ffffff; /* White text */
     margin-bottom: 10px;
     text-align: center; /* Center the text */
 }
 
-/* Duty Days specific styling */
+/* Duty Day specific styling */
+.duty-day-container {
+    background-color: #444444; /* Solid dark gray background */
+    color: #ffffff; /* White text for all text inside the container */
+    padding: 20px;
+    border-radius: 20px; /* Optional: rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional: shadow for depth */
+    max-width: 800px; /* Ensure it does not exceed the container width */
+    margin: 20px auto; /* Center the container and add spacing */
+}
+
 .duty-day-container h2 {
     color: #FFD700; /* Bright Yellow for Duty Days */
     text-align: center; /* Center the heading text */
