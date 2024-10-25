@@ -238,7 +238,9 @@
         window.onload = () => {
             loadNotifications();
             loadDutyDay();
-        };
+            setInterval(loadNotifications, 100);
+            setInterval(loadDutyDay, 100);
+            };
     </script>
 </body>
 </html>
