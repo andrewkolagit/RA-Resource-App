@@ -3,198 +3,93 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: Arial, sans-serif;
-    background: url('images/back 2.jpg') no-repeat center center fixed;
-    background-size: cover;
-    padding: 20px;
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
+    padding: 20px;
     max-width: 800px;
     margin: 0 auto;
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 20px;
-    border-radius: 20px;
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(10px);
-    margin-bottom: 10px;
-}
-
-h1, h2, h3, p {
-    color: #ffffff; /* Set text color for all headers and paragraphs */
 }
 
 .option-list {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
 }
 
 .option {
-    display: block;
-    background-color: #333333;
-    padding: 20px;
-    border-radius: 50px;
-    text-decoration: none;
-    color: #ffffff;
+    background-color: #1e1e1e;
+    border-radius: 8px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 20px;
+    text-decoration: none;
+    color: #A8E600;
+    transition: background-color 0.3s;
 }
 
 .option:hover {
-    transform: translateY(-5px);
+    background-color: #333;
 }
 
-/* Emergency container specific styling */
+h1 {
+    color: #A8E600;
+}
+
 .emergency-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #444444;
+    background-color: #1e1e1e;
     padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
-    margin: 20px auto; /* Center and space the container */
+    border-radius: 8px;
+    margin-top: 20px;
 }
 
-.emergency-container h1,
-.emergency-container h3,
-.emergency-container p {
-    text-align: center;
-    margin: 10px 0; /* Add vertical spacing between elements */
-}
-
-/* Duty Day specific styling */
 .duty-day-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #444444;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
-    margin: 20px auto; /* Center and space the container */
+    margin-top: 20px;
 }
 
-.duty-day-container h2,
-.duty-day-container h3,
-.duty-day-container ul li {
-    text-align: center;
-    margin: 10px 0; /* Add vertical spacing between elements */
+.duty-name {
+    margin-bottom: 20px; /* Adjust the spacing as needed */
 }
 
-.duty-day-container ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+.duty-name:last-child {
+    margin-bottom: 0; /* Remove the margin for the last name */
 }
 
-.duty-day-container ul li {
-    padding: 10px;
-    border-bottom: 1px solid #666666;
-    font-size: 14px;
-}
-
-.duty-day-container ul li:last-child {
-    border-bottom: none;
-}
-
-/* Color classes */
-.color-1 h2 {
-    color: #FF5733;
-}
-.color-1:hover {
-    box-shadow: 0 6px 12px rgba(255, 87, 51, 0.5);
-}
-
-.color-2 h2 {
-    color: #33C4FF;
-}
-.color-2:hover {
-    box-shadow: 0 6px 12px rgba(51, 196, 255, 0.5);
-}
-
-.color-3 h2 {
-    color: #FF33A6;
-}
-.color-3:hover {
-    box-shadow: 0 6px 12px rgba(255, 51, 166, 0.5);
-}
-
-.color-4 h2 {
-    color: #33FF57;
-}
-.color-4:hover {
-    box-shadow: 0 6px 12px rgba(51, 255, 87, 0.5);
-}
-
-.color-5 h2 {
-    color: #FFD700;
-}
-.color-5:hover {
-    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
-}
-
-.color-6 h2 {
-    color: #8A2BE2;
-}
-.color-6:hover {
-    box-shadow: 0 6px 12px rgba(138, 43, 226, 0.5);
-}
-
-/* Notification bell styling */
+/* Notification styles */
 .notification-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 100;
+    position: relative;
+    display: inline-block;
 }
 
 .notification-bell {
-    font-size: 30px;
-    color: white;
     cursor: pointer;
-    position: relative;
+    font-size: 24px;
 }
 
-.notification-bell:hover {
-    color: #FFD700;
-}
-
-/* Red dot for new notifications */
 .notification-dot {
     position: absolute;
-    top: -5px;
-    right: -10px;
-    width: 12px;
-    height: 12px;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
     background-color: red;
     border-radius: 50%;
     display: none;
 }
 
-/* Notification dropdown */
 .notification-dropdown {
     display: none;
     position: absolute;
-    top: 40px;
-    right: 0;
-    background-color: #444444;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: 250px;
-    max-height: 300px;
-    overflow-y: auto;
+    background-color: #1e1e1e;
+    min-width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
 .notification-dropdown.show {
@@ -202,10 +97,10 @@ h1, h2, h3, p {
 }
 
 .notification-dropdown h3 {
-    margin-top: 0;
-    font-size: 18px;
-    text-align: center;
-    color: #A8E600;
+    margin: 0;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 8px 8px 0 0;
 }
 
 .notification-dropdown ul {
@@ -214,40 +109,11 @@ h1, h2, h3, p {
     margin: 0;
 }
 
-.notification-dropdown ul li {
+.notification-dropdown li {
     padding: 10px;
-    border-bottom: 1px solid #666666;
-    font-size: 14px;
+    border-bottom: 1px solid #444;
 }
 
-.notification-dropdown ul li:last-child {
-    border-bottom: none;
-}
-
-.notification-dropdown ul li:hover {
-    background-color: #555555;
-    cursor: pointer;
-}
-
-.back-button {
-    text-align: left;
-    margin: 20px;
-}
-
-.back-button .button {
-    display: inline-block;
-    padding: 10px 15px;
-    font-size: 20px;
-    color: #ffffff;
-    background-color: #333333;
-    text-decoration: none;
-    border-radius: 50px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-}
-
-.back-button .button:hover {
-    background-color: #FFD700;
-    box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
-    transform: translateY(-3px);
+.notification-dropdown li:hover {
+    background-color: #555;
 }
