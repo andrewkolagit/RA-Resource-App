@@ -57,6 +57,10 @@ h1 {
 
 /* Emergency container specific styling */
 .emergency-container {
+    display: flex; /* Use Flexbox for alignment */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
     background-color: #444444; /* Solid dark gray background */
     color: #ffffff; /* White text for all text inside the container */
     padding: 20px;
@@ -66,24 +70,19 @@ h1 {
     margin: 0 auto; /* Center the container */
 }
 
-.emergency-container h1 {
-    color: #ffffff; /* Light lime green */
-    text-align: center; /* Center the heading text */
-}
-
-.emergency-container h3 {
-    color: #A8E600; /* Light lime green */
-    margin-bottom: 10px; /* Add gap between phone numbers */
-}
-
+.emergency-container h1,
+.emergency-container h3,
 .emergency-container p {
-    color: #ffffff; /* White text */
-    margin-bottom: 10px;
     text-align: center; /* Center the text */
+    margin: 0; /* Remove any default margins */
 }
 
 /* Duty Day specific styling */
 .duty-day-container {
+    display: flex; /* Use Flexbox for alignment */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
     background-color: #444444; /* Solid dark gray background */
     color: #ffffff; /* White text for all text inside the container */
     padding: 20px;
@@ -93,9 +92,10 @@ h1 {
     margin: 0 auto; /* Center the container and add spacing */
 }
 
-.duty-day-container h2 {
-    color: #FFD700; /* Bright Yellow for Duty Days */
-    text-align: center; /* Center the heading text */
+.duty-day-container h2,
+.duty-day-container ul li {
+    text-align: center; /* Center the text */
+    margin: 0; /* Remove any default margins */
 }
 
 .duty-day-container ul {
@@ -108,7 +108,6 @@ h1 {
     padding: 10px;
     border-bottom: 1px solid #666666;
     font-size: 14px;
-    text-align: center; /* Center the list item text */
 }
 
 .duty-day-container ul li:last-child {
