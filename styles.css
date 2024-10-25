@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: url('https://cdn.glitch.global/160497a2-e25b-488f-b4be-1cfc23962c6c/back%202.jpg?v=1729815618283') no-repeat center center fixed;
+    background: url('images/back 2.jpg') no-repeat center center fixed;
     background-size: cover;
     padding: 20px;
 }
@@ -64,15 +64,15 @@ h1 {
     display: inline-block;
     padding: 10px 15px;
     font-size: 20px;
-    color: #fff;
-    background-color: #333;
+    color: #ffffff;
+    background-color: #333333;
     border-radius: 8px;
     text-decoration: none;
     transition: background-color 0.3s ease;
 }
 
 .back-button .button:hover {
-    background-color: #555; /* Hover effect */
+    background-color: #555555; /* Hover effect */
 }
 
 /* Emergency container specific styling */
@@ -159,8 +159,8 @@ h1 {
 /* Notification bell styling */
 .notification-container {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 5px;
+    right: 5px;
     z-index: 100; /* Keep it above other elements */
 }
 
@@ -233,4 +233,49 @@ h1 {
 .notification-dropdown ul li:hover {
     background-color: #555555;
     cursor: pointer;
+}
+
+.hamburger-menu {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: #000000; /* Change as needed */
+    border: 3px solid; /* Change as needed */
+    border-radius: 20px;
+    padding: 10px;
+    z-index: 1000; /* Ensure it stays above other content */
+    cursor: pointer;
+    color: white;
+}
+
+.side-panel {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Hide off-screen */
+    width: 250px;
+    height: 100%;
+    background-color: rgba(240, 240, 240, 0.8); /* Use RGBA for a slightly transparent background */
+    border-right: 1px solid #cccccc; /* Change as needed */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: left 0.3s ease, opacity 0.3s ease; /* Smooth transition for both slide and fade */
+    z-index: 999; /* Just below the hamburger menu */
+    opacity: 0; /* Initially hidden */
+}
+
+.side-panel.open {
+    left: 0; /* Slide in */
+    opacity: 1; /* Fully visible */
+    backdrop-filter: blur(4px); /* Apply blur effect */
+}
+
+.menu-item {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #000000; /* Change as needed */
+    border-bottom: 1px solid #f0f0f0; /* Change as needed */
+}
+
+.menu-item:hover {
+    background-color: #ffffff; /* Change as needed */
 }
