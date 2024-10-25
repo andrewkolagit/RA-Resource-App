@@ -54,6 +54,26 @@ h1 {
 .spacer {
     height: 20px;
 }
+/* Styles for the back button */
+.back-button {
+    bottom: 20px;
+    left: 20px;
+}
+
+.back-button .button {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 20px;
+    color: #fff;
+    background-color: #333;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.back-button .button:hover {
+    background-color: #555; /* Hover effect */
+}
 
 /* Emergency container specific styling */
 .emergency-container {
