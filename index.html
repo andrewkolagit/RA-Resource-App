@@ -170,7 +170,7 @@
                 notificationDot.style.display = 'block'; // Show the dot if there are notifications
                 notifications.forEach(notification => {
                     const li = document.createElement('li');
-                    li.textContent = `Subject: "${notification.fields.subject}" - Message: "${notification.fields.message}"`;
+                    li.innerHTML = `<p><strong>Subject:</strong> ${notification.fields.subject}<br> - ${notification.fields.message}</p>`; // Bold subject with break
                     notificationList.appendChild(li);
                 });
             }
