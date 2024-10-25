@@ -75,7 +75,7 @@ h1 {
 .emergency-container h1 {
     color: #ffffff; /* Light lime green */
 }
-.duty-day-container b {
+.duty-day-container a {
     color: #A8E600; /* Light lime green */
 }
 
@@ -85,7 +85,7 @@ h1 {
 }
 
 .duty-day-container h3 {
-    font-size: 17px;
+    font-size: 18px;
 }
 
 .emergency-container p {
