@@ -201,22 +201,26 @@ h1 {
 }
 
 .back-button {
+    text-align: left; /* Aligns the button to the left */
+    margin: 20px; /* Adds some space around the button */
+}
+
+.back-button .button {
     display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 10px 15px;
+    font-size: 20px;
     color: #ffffff; /* White text */
     background-color: #333333; /* Dark gray background */
     text-decoration: none;
-    border-radius: 25px;
+    border-radius: 50px; /* Rounded edges */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 10px; /* Space above the button */
-    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
-.back-button:hover {
+.back-button .button:hover {
     background-color: #FFD700; /* Gold color on hover */
     box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5); /* Larger shadow on hover */
-    transform: translateY(-2px);
+    transform: translateY(-3px); /* Lifts the button when hovered */
 }
+
 
