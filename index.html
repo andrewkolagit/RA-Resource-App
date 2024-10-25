@@ -81,7 +81,16 @@
     </div>
 
     <div class="spacer"></div>
+  
+    <div class="container duty-day-container">
+        <h1>Current On Duty...</h1>
+        <div id="dutyDayContent">
+            <!-- Duty Day information will be populated here -->
+        </div>
+    </div>
 
+    <div class="spacer"></div>
+  
     <div class="container emergency-container">
         <h1>Emergency Contacts</h1>
         <p>If there is an emergency, please contact the following:</p>
@@ -167,8 +176,69 @@
             }
         }
 
-        // Polling every 10 seconds to fetch new notifications
-        setInterval(loadNotifications, 100); // Fetch notifications every 10 seconds
+        // Duty Day functionality
+        async function fetchDutyDay() {
+            const apiKey = 'patgvs2yNFvsy0nld.0cda1f2d1a51d3457f35d49b75ee6a8e05a9539a19583b80dc5e2c2c8ed121db'; // Replace with your Airtable Personal Access Token
+            const baseId = 'appoXg3vvpfVAXmqH'; // Replace with your Airtable Base ID
+            const tableName = 'dutyday'; // Replace with your table name
+            const url = `https://api.airtable.com/v0/${baseId}/${tableName}`;
+
+            const response = await fetch(url, {
+                headers: {
+                    Authorization: `Bearer ${apiKey}`
+                }
+            });
+
+            if (!response.ok) {
+                console.error('Error fetching duty day data:', response.statusText);
+                return [];
+            }
+
+            const data = await response.json();
+            return data.records;
+        }
+
+        async function loadDutyDay() {
+            const records = await fetchDutyDay();
+            const currentTime = new Date();
+            const dutyDayContent = document.getElementById('dutyDayContent');
+
+            // Reset content
+            dutyDayContent.innerHTML = '';
+
+            // Check if there's a matching duty day for the current time
+            let hasData = false;
+            records.forEach(record => {
+                const dateStart = new Date(record.fields.date_start);
+                const dateEnd = new Date(record.fields.date_end);
+                
+                if (currentTime >= dateStart && currentTime < dateEnd) {
+                    hasData = true;
+
+                    const div = document.createElement('div');
+                    div.innerHTML = `
+                        <h3>
+                        <p>Warhawk/Courtyards:<br> <b>${record.fields.warhawk_courtyards}</b></p><br>
+                        <p>Commons/P-40:<br> <b>${record.fields.commons_p40}</b></p><br>
+                        <p>RLC:<br> <b>${record.fields.rlc}</b></p></h3>
+                    `;
+                    dutyDayContent.appendChild(div);
+                }
+            });
+
+            // If no data found, show default message
+            if (!hasData) {
+                const defaultDiv = document.createElement('div');
+                defaultDiv.innerHTML = `<p>Will update at 5PM</p>`;
+                dutyDayContent.appendChild(defaultDiv);
+            }
+        }
+
+        // Load both notifications and duty day on page load
+        window.onload = () => {
+            loadNotifications();
+            loadDutyDay();
+        };
     </script>
 </body>
 </html>
