@@ -64,6 +64,14 @@ h1 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional: shadow for depth */
 }
 
+.duty-day-container {
+    background-color: #444444; /* Solid dark gray background */
+    color: #ffffff; /* White text for all text inside the container */
+    padding: 20px;
+    border-radius: 20px; /* Optional: rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional: shadow for depth */
+}
+
 .emergency-container h1 {
     color: #ffffff; /* Light lime green */
 }
