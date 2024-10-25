@@ -55,13 +55,15 @@ h1 {
     height: 20px;
 }
 
-/* Emergency container specific styling */
+/* Emergency container and Duty Day container specific styling */
 .emergency-container, .duty-day-container {
     background-color: #444444; /* Solid dark gray background */
     color: #ffffff; /* White text for all text inside the container */
     padding: 20px;
     border-radius: 20px; /* Optional: rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional: shadow for depth */
+    margin: 0 auto; /* Centers the container */
+    max-width: 800px; /* Ensure it does not exceed the container width */
 }
 
 .emergency-container h1, .duty-day-container h1 {
@@ -76,11 +78,13 @@ h1 {
 .emergency-container p, .duty-day-container p {
     color: #ffffff; /* White text */
     margin-bottom: 10px;
+    text-align: center; /* Center the text */
 }
 
 /* Duty Days specific styling */
 .duty-day-container h2 {
     color: #FFD700; /* Bright Yellow for Duty Days */
+    text-align: center; /* Center the heading text */
 }
 
 .duty-day-container ul {
@@ -93,6 +97,7 @@ h1 {
     padding: 10px;
     border-bottom: 1px solid #666666;
     font-size: 14px;
+    text-align: center; /* Center the list item text */
 }
 
 .duty-day-container ul li:last-child {
