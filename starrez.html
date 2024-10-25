@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Lookup</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ffa500;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #db9d00;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #ffa500;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 10px auto;
+        }
+
+        button:hover {
+            background-color: #db9d00;
+        }
+
+        #studentInfoContainer {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: rgba(68,68,68);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .info-row {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #ffa500;
+        }
+
+        .value {
+            font-style: italic;
+            color: #ffffff;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Student Information Lookup</h1>
+    <label for="sNumberInput">Enter SNumber:</label>
+    <input type="text" id="sNumberInput" placeholder="Enter SNumber">
+    <button onclick="fetchStudentData()">Lookup</button>
+  </div>
+
+    <div id="studentInfoContainer">
+        <!-- Student information will appear here in a column format -->
+    </div>
+
+    <script>
+        async function fetchStudentData() {
+            const sNumber = document.getElementById('sNumberInput').value.trim();
+            const apiKey = 'patcPbeX3BSheq3Rm.be8f262194631ad0a1a2da34be4c3b7090c43dc667921de1380876531761700e'; // Replace with your Airtable Personal Access Token
+            const baseId = 'appoXg3vvpfVAXmqH'; // Replace with your Airtable Base ID
+            const tableName = 'starrez'; // Replace with your table name
+            const url = `https://api.airtable.com/v0/${baseId}/${tableName}?filterByFormula={snumber}='${sNumber}'`;
+
+            const response = await fetch(url, {
+                headers: {
+                    Authorization: `Bearer ${apiKey}`
+                }
+            });
+
+            if (!response.ok) {
+                console.error('Error fetching data:', response.statusText);
+                alert("Student data not found.");
+                return;
+            }
+
+            const data = await response.json();
+            displayStudentData(data.records);
+        }
+
+        function displayStudentData(records) {
+            const infoContainer = document.getElementById('studentInfoContainer');
+            infoContainer.innerHTML = ''; // Clear any existing data
+
+            if (records.length === 0) {
+                alert("No data found for the provided SNumber.");
+                return;
+            }
+
+            const fields = records[0].fields;
+
+            // Data mapping
+            const dataMap = {
+                'SNumber': fields.snumber || 'N/A',
+                'Last Name': fields.last_name || 'N/A',
+                'First Name': fields.first_name || 'N/A',
+                'Date of Birth': fields.dob || 'N/A',
+                'Gender': fields.gen || 'N/A',
+                'Room Number': fields.room_no || 'N/A',
+                'Community': fields.community || 'N/A',
+                'ESA': fields.esa || 'N/A'
+            };
+
+            // Display data vertically
+            for (const [label, value] of Object.entries(dataMap)) {
+                const row = document.createElement('div');
+                row.className = 'info-row';
+                
+                const labelElement = document.createElement('span');
+                labelElement.className = 'label';
+                labelElement.textContent = `${label}: `;
+
+                const valueElement = document.createElement('span');
+                valueElement.className = 'value';
+                valueElement.textContent = value;
+
+                row.appendChild(labelElement);
+                row.appendChild(valueElement);
+                infoContainer.appendChild(row);
+            }
+        }
+    </script>
+</body>
+</html>
