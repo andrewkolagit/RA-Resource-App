@@ -34,32 +34,26 @@
         </div>
     </div>
 
+  <div class="hamburger-menu" id="hamburgerMenu">
+    &#9776; FORMS
+</div>
+<div class="side-panel" id="sidePanel"><br><br><br><br>
+    <a href="information.html" class="menu-item">Vacancy Checks Forms</a>
+    <a href="forms.html" class="menu-item">Rent Ready Form</a>
+    <a href="https://app.smartsheet.com/b/form/e7f6798063c14cf9a19502f425f4ea09" class="menu-item">H & S Inspection Forms</a>
+    <a href="https://app.smartsheet.com/b/form/3be370ba12b14142ba819f8119e0ead8?confirm=true" class="menu-item">Maintenance Requests</a>
+    <a href="https://cm.maxient.com/reportingform.php?AUMontgomery&layout_id=4" class="menu-item">RA Time Off Request</a>
+    <a href="starrez.html" class="menu-item">Lockout Form</a>
+    <a href="https://aumontgomery-my.sharepoint.com/:x:/g/personal/msmith59_aum_edu/ES5lWxo8CcxBsgu4NelB3JMBv0XhkhI0cjNtxWzj4rHt4Q?e=ZBx4b3" class="menu-item">Duty Report</a>
+    <a href="Fall 2024 Duty Calendar.pdf" class="menu-item" target="_blank">Incident Report</a>
+</div>
+  
     <div class="container">
         <h1>RA HELP APP</h1>
         <div class="option-list">
             <a href="information.html" class="option color-1">
                 <div class="option-content">
                     <h2>ESSENTIAL INFORMATION</h2>
-                </div>
-            </a>
-            <a href="forms.html" class="option color-2">
-                <div class="option-content">
-                    <h2>FORMS</h2>
-                </div>
-            </a>
-            <a href="https://app.smartsheet.com/b/form/e7f6798063c14cf9a19502f425f4ea09" class="option color-4">
-                <div class="option-content">
-                    <h2>LOCKOUT FORM</h2>
-                </div>
-            </a>
-            <a href="https://app.smartsheet.com/b/form/3be370ba12b14142ba819f8119e0ead8?confirm=true" class="option color-3">
-                <div class="option-content">
-                    <h2>DUTY REPORT</h2>
-                </div>
-            </a>
-            <a href="https://cm.maxient.com/reportingform.php?AUMontgomery&layout_id=4" class="option color-5">
-                <div class="option-content">
-                    <h2>INCIDENT REPORT</h2>
                 </div>
             </a>
             <a href="starrez.html" class="option color-6">
@@ -241,6 +235,21 @@
             setInterval(loadNotifications, 100);
             setInterval(loadDutyDay, 100);
             };
+      
+      const hamburgerMenu = document.getElementById('hamburgerMenu');
+      const sidePanel = document.getElementById('sidePanel');
+
+      hamburgerMenu.addEventListener('click', () => {
+      sidePanel.classList.toggle('open');
+      });
+
+      // Close the side panel when clicking outside
+      window.addEventListener('click', (event) => {
+      if (!event.target.matches('.hamburger-menu') && sidePanel.classList.contains('open')) {
+        sidePanel.classList.remove('open');
+      }
+      });
+
     </script>
 </body>
 </html>
