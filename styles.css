@@ -90,7 +90,7 @@ h1 {
     border-radius: 20px; /* Optional: rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional: shadow for depth */
     max-width: 800px; /* Ensure it does not exceed the container width */
-    margin: 20px auto; /* Center the container and add spacing */
+    margin: 0 auto; /* Center the container and add spacing */
 }
 
 .duty-day-container h2 {
