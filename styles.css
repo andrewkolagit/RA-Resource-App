@@ -56,7 +56,7 @@ h1 {
 }
 
 /* Emergency container specific styling */
-.emergency-container {
+.emergency-container, .duty-day-container {
     background-color: #444444; /* Solid dark gray background */
     color: #ffffff; /* White text for all text inside the container */
     padding: 20px;
@@ -64,18 +64,39 @@ h1 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional: shadow for depth */
 }
 
-.emergency-container h1 {
+.emergency-container h1, .duty-day-container h1 {
     color: #ffffff; /* Light lime green */
 }
 
-.emergency-container h3 {
+.emergency-container h3, .duty-day-container h3 {
     color: #A8E600; /* Light lime green */
     margin-bottom: 10px; /* Add gap between phone numbers */
 }
 
-.emergency-container p {
+.emergency-container p, .duty-day-container p {
     color: #ffffff; /* White text */
     margin-bottom: 10px;
+}
+
+/* Duty Days specific styling */
+.duty-day-container h2 {
+    color: #FFD700; /* Bright Yellow for Duty Days */
+}
+
+.duty-day-container ul {
+    list-style-type: none; /* Removes default list styling */
+    padding: 0;
+    margin: 0;
+}
+
+.duty-day-container ul li {
+    padding: 10px;
+    border-bottom: 1px solid #666666;
+    font-size: 14px;
+}
+
+.duty-day-container ul li:last-child {
+    border-bottom: none;
 }
 
 /* Color classes */
@@ -222,5 +243,3 @@ h1 {
     box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5); /* Larger shadow on hover */
     transform: translateY(-3px); /* Lifts the button when hovered */
 }
-
-
