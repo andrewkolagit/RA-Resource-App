@@ -112,7 +112,7 @@
         async function fetchStudentData() {
     const sNumber = document.getElementById('sNumberInput').value.trim();
     const tableName = 'starrez'; // Replace with your table name
-    const url = `/.netlify/functions/fetchAirtable?tableName=${tableName}&sNumber=${encodeURIComponent(sNumber)}`;
+    const url = `/.netlify/functions/fetchAirtable2?tableName=${tableName}&sNumber=${encodeURIComponent(sNumber)}`;
 
     const response = await fetch(url);
 
