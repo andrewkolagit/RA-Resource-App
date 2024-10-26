@@ -1,0 +1,15 @@
+{
+  "name": "my-netlify-functions",
+  "version": "1.0.0",
+  "description": "Serverless functions for my Netlify site",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'No build necessary for Netlify Functions'"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.7" // or the latest version available
+  },
+  "engines": {
+    "node": "14.x" // specify the Node.js version if necessary
+  }
+}
