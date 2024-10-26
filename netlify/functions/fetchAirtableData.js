@@ -1,33 +1,36 @@
-// main/netlify/functions/fetchAirtableData.js
-const fetch = require('node-fetch');
+const axios = require('axios');
 
-exports.handler = async function (event, context) {
-    const airtableToken = process.env.AIRTABLE_PAT; // Access Airtable PAT securely from Netlify env variables
-    const airtableURL = 'https://api.airtable.com/v0/YOUR_BASE_ID/YOUR_TABLE_NAME'; // Replace with your Airtable details
-
+exports.handler = async function(event, context) {
     try {
-        const response = await fetch(airtableURL, {
-            headers: {
-                Authorization: `Bearer ${airtableToken}`,
-                'Content-Type': 'application/json',
-            },
-        });
-        const data = await response.json();
-
-        if (!response.ok) {
+        const baseId = process.env.AIRTABLE_BASE_ID;
+        const apiKey = process.env.AIRTABLE_PAT;
+        
+        // Get the table name from the query parameter
+        const tableName = event.queryStringParameters.table;
+        if (!tableName) {
             return {
-                statusCode: response.status,
-                body: JSON.stringify({ error: data.error.message }),
+                statusCode: 400,
+                body: JSON.stringify({ error: 'Table name is required' }),
             };
         }
 
+        // Construct the Airtable API URL using the provided table name
+        const url = `https://api.airtable.com/v0/${baseId}/${tableName}`;
+
+        const response = await axios.get(url, {
+            headers: {
+                Authorization: `Bearer ${apiKey}`
+            }
+        });
+
         return {
             statusCode: 200,
-            body: JSON.stringify(data),
+            body: JSON.stringify(response.data),
         };
     } catch (error) {
+        console.error('Error in airtable-proxy function:', error);
         return {
-            statusCode: 500,
+            statusCode: error.response?.status || 500,
             body: JSON.stringify({ error: 'Failed to fetch data from Airtable' }),
         };
     }
