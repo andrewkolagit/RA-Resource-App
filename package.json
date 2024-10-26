@@ -7,9 +7,9 @@
     "build": "echo 'No build necessary for Netlify Functions'"
   },
   "dependencies": {
-    "node-fetch": "^2.6.7" // or the latest version available
+    "node-fetch": "^2.6.7"
   },
   "engines": {
-    "node": "18.x" // specify the Node.js version if necessary
+    "node": "18.x"
   }
 }
