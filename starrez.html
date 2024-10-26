@@ -110,26 +110,20 @@
 
     <script>
         async function fetchStudentData() {
-            const sNumber = document.getElementById('sNumberInput').value.trim();
-            const apiKey = 'patcPbeX3BSheq3Rm.be8f262194631ad0a1a2da34be4c3b7090c43dc667921de1380876531761700e'; // Replace with your Airtable Personal Access Token
-            const baseId = 'appoXg3vvpfVAXmqH'; // Replace with your Airtable Base ID
-            const tableName = 'starrez'; // Replace with your table name
-            const url = `https://api.airtable.com/v0/${baseId}/${tableName}?filterByFormula={snumber}='${sNumber}'`;
+    const sNumber = document.getElementById('sNumberInput').value.trim();
+    const tableName = 'starrez'; // Replace with your table name
+    const url = `/.netlify/functions/fetchAirtable?tableName=${tableName}&sNumber=${encodeURIComponent(sNumber)}`;
 
-            const response = await fetch(url, {
-                headers: {
-                    Authorization: `Bearer ${apiKey}`
-                }
-            });
+    const response = await fetch(url);
 
-            if (!response.ok) {
-                console.error('Error fetching data:', response.statusText);
-                alert("Student data not found.");
-                return;
-            }
+    if (!response.ok) {
+        console.error('Error fetching data:', response.statusText);
+        alert("Student data not found.");
+        return;
+    }
 
-            const data = await response.json();
-            displayStudentData(data.records);
+    const data = await response.json();
+    displayStudentData(data.records);
         }
 
         function displayStudentData(records) {
