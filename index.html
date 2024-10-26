@@ -121,26 +121,21 @@
             }
         });
 
-      async function fetchNotifications() {
-            const apiKey = 'patgvs2yNFvsy0nld.0cda1f2d1a51d3457f35d49b75ee6a8e05a9539a19583b80dc5e2c2c8ed121db'; // Replace with your Airtable Personal Access Token
-            const baseId = 'appoXg3vvpfVAXmqH'; // Replace with your Airtable Base ID
-            const tableName = 'notifications'; // Replace with your table name
-            const url = `https://api.airtable.com/v0/${baseId}/${tableName}`;
+async function fetchNotifications() {
+    const tableName = 'notifications'; // Replace with your table name
+    const url = `/.netlify/functions/fetchAirtable?tableName=${tableName}`;
 
-      const response = await fetch(url, {
-                headers: {
-                    Authorization: `Bearer ${apiKey}`
-                }
-            });
+    const response = await fetch(url);
 
-            if (!response.ok) {
-                console.error('Error fetching notifications data:', response.statusText);
-                return [];
-            }
+    if (!response.ok) {
+        console.error('Error fetching notifications data:', response.statusText);
+        return [];
+    }
 
-            const data = await response.json();
-            return data.records;
+    const data = await response.json();
+    return data.records;
 }
+        
         function filterNotifications(records) {
             const currentTime = new Date();
             const notificationsToShow = records.filter(record => {
