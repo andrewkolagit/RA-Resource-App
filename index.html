@@ -47,6 +47,19 @@
     <a href="https://app.smartsheet.com/b/form/3be370ba12b14142ba819f8119e0ead8" class="menu-item">Duty Report</a>
     <a href="https://cm.maxient.com/reportingform.php?AUMontgomery&layout_id=4" class="menu-item" target="_blank">Incident Report</a>
 </div>
+
+<div class="feedback-container">
+    <span class="feedback-icon" onclick="toggleFeedbackPopup()">💬</span>
+</div>
+
+<div class="feedback-popup" id="feedbackPopup">
+    <h3>Feedback</h3><br>
+    <form id="feedbackForm">
+        <textarea name="feedback" placeholder="Your Feedback" rows="4" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+    
 <div class="spacer"></div>
 <div class="spacer"></div>
 <div class="spacer"></div>
@@ -102,24 +115,68 @@
     </div>
 
     <script>
-        const notificationBell = document.getElementById('notificationBell');
-        const notificationDropdown = document.getElementById('notificationDropdown');
-        const notificationList = document.getElementById('notificationList');
-        const notificationDot = document.getElementById('notificationDot'); // Get the notification dot element
+const notificationBell = document.getElementById('notificationBell');
+const notificationDropdown = document.getElementById('notificationDropdown');
+const notificationList = document.getElementById('notificationList');
+const notificationDot = document.getElementById('notificationDot'); // Get the notification dot element
 
-        notificationBell.addEventListener('click', () => {
-            notificationDropdown.classList.toggle('show');
-            loadNotifications(); // Load notifications when bell is clicked
-            notificationDot.style.display = 'none'; // Hide dot when dropdown is opened
-        });
+// Create overlay element
+const overlay = document.createElement('div'); // Create overlay element
+overlay.className = 'overlay'; // Assign class for styling
+document.body.appendChild(overlay); // Add overlay to the body
 
-        window.addEventListener('click', (event) => {
-            if (!event.target.matches('.notification-bell')) {
-                if (notificationDropdown.classList.contains('show')) {
-                    notificationDropdown.classList.remove('show');
-                }
-            }
+notificationBell.addEventListener('click', () => {
+    if (notificationDropdown.classList.contains('show')) {
+        // If dropdown is already shown, apply closing animation
+        notificationDropdown.classList.add('closing');
+        notificationDropdown.addEventListener('animationend', function hideAfterClose() {
+            notificationDropdown.style.display = 'none'; // Hide dropdown after animation ends
+            notificationDropdown.classList.remove('show', 'closing'); // Remove classes
+            overlay.classList.remove('visible'); // Hide overlay
+            document.body.classList.remove('no-scroll'); // Enable page scroll
+            notificationDropdown.removeEventListener('animationend', hideAfterClose);
         });
+    } else {
+        // Show dropdown and load notifications
+        notificationDropdown.style.display = 'block'; // Show dropdown
+        notificationDropdown.classList.add('show'); // Apply show class
+        loadNotifications(); // Load notifications when bell is clicked
+        notificationDot.style.display = 'none'; // Hide dot when dropdown is opened
+        overlay.classList.add('visible'); // Show overlay
+        document.body.classList.add('no-scroll'); // Disable page scroll
+    }
+});
+
+// Close dropdown when clicking outside
+window.addEventListener('click', (event) => {
+    if (!event.target.matches('.notification-bell')) {
+        if (notificationDropdown.classList.contains('show')) {
+            // Apply closing animation when closing from outside
+            notificationDropdown.classList.add('closing');
+            notificationDropdown.addEventListener('animationend', function hideAfterClose() {
+                notificationDropdown.style.display = 'none'; // Hide dropdown after animation ends
+                notificationDropdown.classList.remove('show', 'closing'); // Remove classes
+                overlay.classList.remove('visible'); // Hide overlay
+                document.body.classList.remove('no-scroll'); // Enable page scroll
+                notificationDropdown.removeEventListener('animationend', hideAfterClose);
+            });
+        }
+    }
+});
+
+// Overlay click event to close the dropdown
+overlay.addEventListener('click', () => {
+    if (notificationDropdown.classList.contains('show')) {
+        notificationDropdown.classList.add('closing');
+        notificationDropdown.addEventListener('animationend', function hideAfterClose() {
+            notificationDropdown.style.display = 'none'; // Hide dropdown after animation ends
+            notificationDropdown.classList.remove('show', 'closing'); // Remove classes
+            overlay.classList.remove('visible'); // Hide overlay
+            document.body.classList.remove('no-scroll'); // Enable page scroll
+            notificationDropdown.removeEventListener('animationend', hideAfterClose);
+        });
+    }
+});
 
 async function fetchNotifications() {
     const tableName = 'notifications'; // Replace with your table name
@@ -226,20 +283,104 @@ async function fetchNotifications() {
             setInterval(loadDutyDay, 100);
             };
       
-      const hamburgerMenu = document.getElementById('hamburgerMenu');
-      const sidePanel = document.getElementById('sidePanel');
+const hamburgerMenu = document.querySelector('.hamburger-menu');
+const sidePanel = document.querySelector('.side-panel');
 
-      hamburgerMenu.addEventListener('click', () => {
-      sidePanel.classList.toggle('open');
-      });
+hamburgerMenu.addEventListener('click', () => {
+    const isOpen = sidePanel.classList.toggle('open'); // Toggle the side panel
+    overlay.classList.toggle('visible', isOpen); // Show/hide overlay based on panel state
+    document.body.classList.toggle('no-scroll', isOpen); // Disable/enable page scroll
+});
 
-      // Close the side panel when clicking outside
-      window.addEventListener('click', (event) => {
-      if (!event.target.matches('.hamburger-menu') && sidePanel.classList.contains('open')) {
+overlay.addEventListener('click', () => {
+    // Close side panel when overlay is clicked
+    sidePanel.classList.remove('open');
+    overlay.classList.remove('visible'); // Hide the overlay
+    document.body.classList.remove('no-scroll'); // Enable page scroll
+});
+
+// Close the side panel if clicked outside (overlay handles this)
+window.addEventListener('click', (event) => {
+    if (!sidePanel.contains(event.target) && !hamburgerMenu.contains(event.target) && sidePanel.classList.contains('open')) {
         sidePanel.classList.remove('open');
-      }
-      });
+        overlay.classList.remove('visible'); // Hide the overlay
+        document.body.classList.remove('no-scroll'); // Enable page scroll
+    }
+});
+      
+function toggleFeedbackPopup() {
+    const feedbackPopup = document.getElementById("feedbackPopup");
+    const overlay = document.querySelector('.overlay'); // Get the overlay element
 
-    </script>
+    if (feedbackPopup.classList.contains("opening")) {
+        // If the form is open, apply the closing animation
+        feedbackPopup.classList.remove("opening");
+        feedbackPopup.classList.add("closing");
+
+        // Wait for animation to complete before hiding
+        feedbackPopup.addEventListener("animationend", function hideAfterClose() {
+            feedbackPopup.style.display = "none";
+            feedbackPopup.classList.remove("closing");
+            overlay.classList.remove("visible"); // Hide overlay
+            document.body.classList.remove("no-scroll"); // Enable page scroll
+            feedbackPopup.removeEventListener("animationend", hideAfterClose);
+        });
+    } else {
+        // If the form is closed, apply the opening animation
+        feedbackPopup.classList.add("opening");
+        feedbackPopup.style.display = "block";
+        overlay.classList.add("visible"); // Show overlay
+        document.body.classList.add("no-scroll"); // Disable page scroll
+    }
+}
+
+// Close the popup when clicking outside of it
+document.addEventListener("click", function(event) {
+    const feedbackPopup = document.getElementById("feedbackPopup");
+    const feedbackIcon = document.querySelector(".feedback-icon");
+    const overlay = document.querySelector('.overlay'); // Get the overlay element
+
+    // Check if the clicked target is not the popup or the feedback icon
+    if (!feedbackPopup.contains(event.target) && !feedbackIcon.contains(event.target)) {
+        // Close the popup if it is open
+        if (feedbackPopup.classList.contains("opening")) {
+            toggleFeedbackPopup();
+        }
+    }
+});
+
+// Overlay click event to close the feedback popup
+overlay.addEventListener('click', () => {
+    if (feedbackPopup.classList.contains("opening")) {
+        toggleFeedbackPopup(); // Close the popup on overlay click
+    }
+});
+
+// Function to send data to Airtable
+async function sendFeedbackToAirtable(feedbackData) {
+    const response = await fetch('/.netlify/functions/submitFeedback', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ feedback: feedbackData }) // Sending feedback as JSON
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        console.error('Error:', error);
+        alert('Error submitting feedback. Please try again later.');
+    } else {
+        alert('Feedback submitted successfully!');
+
+        // Clear the form fields
+        document.getElementById('feedbackForm').reset(); // Resets all form fields
+
+        // Optionally, close the feedback popup after submission
+        toggleFeedbackPopup();
+    }
+}
+
+</script>
 </body>
 </html>
