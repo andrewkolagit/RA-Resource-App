@@ -156,16 +156,36 @@ h1 {
     box-shadow: 0 6px 12px rgba(138, 43, 226, 0.5); /* Purple shadow */
 }
 
+/* Overlay for background blur effect */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent black */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Smooth fade */
+    z-index: auto; /* Just below the menu */
+    pointer-events: none; /* Allow clicks through when hidden */
+    backdrop-filter: blur(7px); /* Apply blur effect to the background */
+}
+
+.overlay.visible {
+    opacity: 1; /* Fully visible */
+    pointer-events: auto; /* Disable clicks through when visible */
+}
+
 /* Notification bell styling */
 .notification-container {
     position: fixed;
-    top: 10px;
-    right: 20px;
-    z-index: 100; /* Keep it above other elements */
+    top: 1px;
+    right: 5px;
+    z-index: 1000; /* Ensure it stays above other content */
 }
 
 .notification-bell {
-    font-size: 30px; /* Adjust the size as needed */
+    font-size: 40px; /* Adjust the size as needed */
     color: white;
     cursor: pointer;
     position: relative; /* Position for the dot */
@@ -189,10 +209,10 @@ h1 {
 
 /* Notification dropdown */
 .notification-dropdown {
-    display: none;
+    display: none; /* Initially hidden */
     position: absolute;
-    top: 40px;
-    right: 0;
+    top: 54px;
+    right: 6px;
     background-color: #444444;
     color: white;
     padding: 10px;
@@ -201,10 +221,42 @@ h1 {
     width: 250px;
     max-height: 300px;
     overflow-y: auto;
+    transform-origin: top right; /* Scale from the top-right */
 }
 
+/* Show class for opening animation */
 .notification-dropdown.show {
-    display: block;
+    display: block; /* Make it block for the animation */
+    animation: popup 0.2s ease forwards; /* Animation for opening */
+}
+
+/* Animation for closing */
+.notification-dropdown.closing {
+    animation: dropOut 0.2s ease forwards; /* Animation for closing */
+}
+
+/* Keyframe animation for dropdown effect */
+@keyframes dropdown {
+    0% {
+        transform: scaleY(0); /* Start from scale 0 */
+        opacity: 0; /* Start invisible */
+    }
+    100% {
+        transform: scaleY(1); /* End at normal scale */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Keyframe animation for drop-out effect */
+@keyframes dropOut {
+    0% {
+        transform: scaleY(1); /* Start at normal scale */
+        opacity: 1; /* Fully visible */
+    }
+    100% {
+        transform: scaleY(0); /* End at scale 0 */
+        opacity: 0; /* Fade out */
+    }
 }
 
 .notification-dropdown h3 {
@@ -234,7 +286,6 @@ h1 {
     background-color: #555555;
     cursor: pointer;
 }
-
 .hamburger-menu {
     position: fixed;
     top: 10px;
@@ -254,7 +305,7 @@ h1 {
     left: -250px; /* Hide off-screen */
     width: 250px;
     height: 100%;
-    background-color: rgba(240, 240, 240, 0.8); /* Use RGBA for a slightly transparent background */
+    background-color: rgba(240, 240, 240, 0.8); /* Slightly transparent */
     border-right: 1px solid #cccccc; /* Change as needed */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     transition: left 0.3s ease, opacity 0.3s ease; /* Smooth transition for both slide and fade */
@@ -265,7 +316,6 @@ h1 {
 .side-panel.open {
     left: 0; /* Slide in */
     opacity: 1; /* Fully visible */
-    backdrop-filter: blur(4px); /* Apply blur effect */
 }
 
 .menu-item {
@@ -278,4 +328,112 @@ h1 {
 
 .menu-item:hover {
     background-color: #ffffff; /* Change as needed */
+}
+.no-scroll {
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Feedback Part of the style*/
+/* Feedback Icon */
+.feedback-container {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    z-index: 1000; /* Keep it above other elements */
+}
+
+.feedback-icon {
+    font-size: 40px; /* Adjust the size as needed */
+    color: white;
+    cursor: pointer;
+    position: relative;
+}
+
+.feedback-icon:hover {
+    color: #FFD700; /* Gold color on hover */
+}
+
+/* Feedback popup form */
+.feedback-popup {
+    display: none;
+    position: fixed;
+    bottom: 60px; /* Adjust distance above the icon */
+    right: 10px;
+    background-color: #444444;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 999; /* Ensure it overlays other elements */
+    transform-origin: bottom right;
+}
+
+/* Show class for opening animation */
+.feedback-popup.opening {
+    display: block;
+    animation: popup 0.2s ease forwards;
+}
+
+/* Closing animation */
+.feedback-popup.closing {
+    animation: dropOut 0.2s ease forwards;
+}
+
+/* Keyframe animation for pop-up effect */
+@keyframes popup {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Keyframe animation for drop-out effect */
+@keyframes dropOut {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+.feedback-popup h3 {
+    margin-top: 0;
+    font-size: 18px;
+    text-align: center;
+    color: #A8E600;
+}
+
+.feedback-popup form {
+    display: flex;
+    flex-direction: column;
+}
+
+.feedback-popup input,
+.feedback-popup textarea,
+.feedback-popup button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #666666;
+    background-color: #555555;
+    color: white;
+    font-size: 14px;
+}
+
+.feedback-popup button {
+    background-color: #A8E600;
+    color: #444444;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.feedback-popup button:hover {
+    background-color: #91c700;
 }
