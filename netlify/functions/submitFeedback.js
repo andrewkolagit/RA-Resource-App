@@ -11,8 +11,8 @@ exports.handler = async (event, context) => {
 
     const { feedback } = JSON.parse(event.body); // Parse the incoming request body
 
-    const url = `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/feedback_form`; // Replace YOUR_TABLE_NAME
-    const apiKey = process.env.AIRTABLE_PAT; // Access API key from environment variables
+    const url = `https://api.airtable.com/v0/${process.env.FEEDBACK_BASE_ID}/feedback_form`; // Replace YOUR_TABLE_NAME
+    const apiKey = process.env.FEEDBACK_PAT; // Access API key from environment variables
 
     try {
         const response = await fetch(url, {
