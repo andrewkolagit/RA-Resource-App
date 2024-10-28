@@ -198,8 +198,8 @@ h1 {
 /* Red dot for new notifications */
 .notification-dot {
     position: absolute;
-    top: -5px; /* Adjusts the position of the dot */
-    right: -10px; /* Adjusts the position of the dot */
+    top: 0px; /* Adjusts the position of the dot */
+    right: 0px; /* Adjusts the position of the dot */
     width: 12px; /* Dot width */
     height: 12px; /* Dot height */
     background-color: red; /* Dot color */
