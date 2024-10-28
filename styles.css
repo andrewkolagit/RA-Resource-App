@@ -338,7 +338,7 @@ h1 {
 .feedback-container {
     position: fixed;
     bottom: 5px;
-    right: 5px;
+    right: 11px;
     z-index: 1000; /* Keep it above other elements */
 }
 
