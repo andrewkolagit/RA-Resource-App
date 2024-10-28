@@ -179,7 +179,7 @@ h1 {
 /* Notification bell styling */
 .notification-container {
     position: fixed;
-    top: 3px;
+    top: 5px;
     right: 11px;
     z-index: 1000; /* Ensure it stays above other content */
 }
