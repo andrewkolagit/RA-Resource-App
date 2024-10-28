@@ -382,6 +382,14 @@ async function sendFeedbackToAirtable(feedbackData) {
     }
 }
 
+// Add an event listener to the form
+document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const feedbackData = event.target.elements.feedback.value; // Get feedback value
+    sendFeedbackToAirtable(feedbackData); // Call the function to send data
+});
+
 </script>
 </body>
 </html>
