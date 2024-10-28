@@ -180,7 +180,7 @@ h1 {
 .notification-container {
     position: fixed;
     top: 1px;
-    right: 5px;
+    right: 8px;
     z-index: 1000; /* Ensure it stays above other content */
 }
 
