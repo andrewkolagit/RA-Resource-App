@@ -271,3 +271,62 @@ document.getElementById('feedbackForm').addEventListener('submit', function(even
     const feedbackData = event.target.elements.feedback.value; // Get feedback value
     sendFeedbackToAirtable(feedbackData); // Call the function to send data
 });
+
+        async function fetchStudentData() {
+    const sNumber = document.getElementById('sNumberInput').value.trim();
+    const tableName = 'starrez'; // Replace with your table name
+    const url = `/.netlify/functions/fetchAirtable2?tableName=${tableName}&sNumber=${encodeURIComponent(sNumber)}`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        console.error('Error fetching data:', response.statusText);
+        alert("Student data not found.");
+        return;
+    }
+
+    const data = await response.json();
+    displayStudentData(data.records);
+        }
+
+        function displayStudentData(records) {
+            const infoContainer = document.getElementById('studentInfoContainer');
+            infoContainer.innerHTML = ''; // Clear any existing data
+
+            if (records.length === 0) {
+                alert("No data found for the provided SNumber.");
+                return;
+            }
+
+            const fields = records[0].fields;
+
+            // Data mapping
+            const dataMap = {
+                'SNumber': fields.snumber || 'N/A',
+                'Last Name': fields.last_name || 'N/A',
+                'First Name': fields.first_name || 'N/A',
+                'Date of Birth': fields.dob || 'N/A',
+                'Gender': fields.gen || 'N/A',
+                'Room Number': fields.room_no || 'N/A',
+                'Community': fields.community || 'N/A',
+                'ESA': fields.esa || 'N/A'
+            };
+
+            // Display data vertically
+            for (const [label, value] of Object.entries(dataMap)) {
+                const row = document.createElement('div');
+                row.className = 'info-row';
+                
+                const labelElement = document.createElement('span');
+                labelElement.className = 'label';
+                labelElement.textContent = `${label}: `;
+
+                const valueElement = document.createElement('span');
+                valueElement.className = 'value';
+                valueElement.textContent = value;
+
+                row.appendChild(labelElement);
+                row.appendChild(valueElement);
+                infoContainer.appendChild(row);
+            }
+        }
