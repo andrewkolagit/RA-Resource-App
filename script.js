@@ -162,8 +162,8 @@ async function fetchNotifications() {
         window.onload = () => {
             loadNotifications();
             loadDutyDay();
-            setInterval(loadNotifications, 100);
-            setInterval(loadDutyDay, 100);
+            setInterval(loadNotifications, 1000);
+            setInterval(loadDutyDay, 1000);
             };
       
 const hamburgerMenu = document.querySelector('.hamburger-menu');
