@@ -218,7 +218,7 @@ h1 {
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: 470px;
+    width: 440px;
     max-height: 300px;
     overflow-y: auto;
     transform-origin: top right; /* Scale from the top-right */
@@ -338,7 +338,7 @@ h1 {
 .feedback-container {
     position: fixed;
     bottom: 5px;
-    right: 5px;
+    right: 11px;
     z-index: 1000; /* Keep it above other elements */
 }
 
