@@ -1,4 +1,4 @@
-const fetch = require('node-fetch'); // Make sure to install node-fetch
+const fetch = require('node-fetch'); // Ensure to install node-fetch
 
 exports.handler = async (event, context) => {
     // Check for the correct HTTP method
