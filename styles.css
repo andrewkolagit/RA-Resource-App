@@ -185,7 +185,7 @@ h1 {
 }
 
 .notification-bell {
-    font-size: 40px; /* Adjust the size as needed */
+    font-size: 30px; /* Adjust the size as needed */
     color: white;
     cursor: pointer;
     position: relative; /* Position for the dot */
@@ -343,7 +343,7 @@ h1 {
 }
 
 .feedback-icon {
-    font-size: 40px; /* Adjust the size as needed */
+    font-size: 30px; /* Adjust the size as needed */
     color: white;
     cursor: pointer;
     position: relative;
