@@ -213,14 +213,13 @@ h1 {
     margin: 0 auto;
     position: absolute;
     top: 54px;
-    left: 0px;
     right: 0px;
     background-color: #444444;
     color: white;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    max-width: 800px;
+    width: 100%;
     max-height: 300px;
     overflow-y: auto;
     transform-origin: top right; /* Scale from the top-right */
