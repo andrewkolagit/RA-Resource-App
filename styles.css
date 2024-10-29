@@ -219,7 +219,7 @@ h1 {
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: 100%;
+    width: 800px;
     max-height: 300px;
     overflow-y: auto;
     transform-origin: top right; /* Scale from the top-right */
