@@ -210,6 +210,7 @@ h1 {
 /* Notification dropdown */
 .notification-dropdown {
     display: none; /* Initially hidden */
+    margin: 0 auto;
     position: absolute;
     top: 54px;
     right: 6px;
