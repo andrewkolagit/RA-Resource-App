@@ -213,7 +213,8 @@ h1 {
     margin: 0 auto;
     position: absolute;
     top: 54px;
-    right: 6px;
+    left: 0px;
+    right: 0px;
     background-color: #444444;
     color: white;
     padding: 10px;
