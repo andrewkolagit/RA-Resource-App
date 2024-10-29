@@ -153,7 +153,7 @@ async function fetchNotifications() {
             // If no data found, show default message
             if (!hasData) {
                 const defaultDiv = document.createElement('div');
-                defaultDiv.innerHTML = `<p>Will update at 5PM</p>`;
+                defaultDiv.innerHTML = `<p>Will update at 4:30PM</p>`;
                 dutyDayContent.appendChild(defaultDiv);
             }
         }
