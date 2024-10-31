@@ -6,6 +6,7 @@
     <title>RA Resource App</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -18,6 +19,17 @@
                     });
             });
         }
+
+        if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+        if (!user) {
+            window.netlifyIdentity.on("login", () => {
+                document.location.href = "/dashboard"; // Redirect after login
+            });
+        }
+    });
+}
+
     </script>
 </head>
 <body>
