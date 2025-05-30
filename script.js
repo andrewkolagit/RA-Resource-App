@@ -142,9 +142,9 @@ async function fetchNotifications() {
                     const div = document.createElement('div');
                     div.innerHTML = `
                         <h3>
-                        <p>Warhawk/Courtyards:<br> <a>${record.fields.warhawk_courtyards}</a></p><br>
-                        <p>Commons/P-40:<br> <a>${record.fields.commons_p40}</a></p><br>
-                        <p>RLC:<br> <a>${record.fields.rlc}</a></p></h3>
+                        <p>Building 1:<br> <a>${record.fields.bl1}</a></p><br>
+                        <p>Vuilding 2:<br> <a>${record.fields.bl2}</a></p><br>
+                        <p>Supervisor:<br> <a>${record.fields.sup}</a></p></h3>
                     `;
                     dutyDayContent.appendChild(div);
                 }
