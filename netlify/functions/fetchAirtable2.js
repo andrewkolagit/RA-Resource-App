@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
     // Construct the Airtable API URL with the filter if sNumber is provided
     let apiUrl = `https://api.airtable.com/v0/${airtableBaseId}/${tableName}`;
     if (sNumber) {
-        apiUrl += `?filterByFormula={snumber}='${sNumber}'`;
+        apiUrl += `?filterByFormula={sid}='${sNumber}'`;
     }
 
     try {
