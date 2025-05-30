@@ -143,7 +143,7 @@ async function fetchNotifications() {
                     div.innerHTML = `
                         <h3>
                         <p>Building 1:<br> <a>${record.fields.bl1}</a></p><br>
-                        <p>Vuilding 2:<br> <a>${record.fields.bl2}</a></p><br>
+                        <p>Building 2:<br> <a>${record.fields.bl2}</a></p><br>
                         <p>Supervisor:<br> <a>${record.fields.sup}</a></p></h3>
                     `;
                     dutyDayContent.appendChild(div);
