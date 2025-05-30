@@ -302,7 +302,7 @@ document.getElementById('feedbackForm').addEventListener('submit', function(even
 
             // Data mapping
             const dataMap = {
-                'SNumber': fields.snumber || 'N/A',
+                'Student ID Number': fields.snumber || 'N/A',
                 'Last Name': fields.last_name || 'N/A',
                 'First Name': fields.first_name || 'N/A',
                 'Date of Birth': fields.dob || 'N/A',
