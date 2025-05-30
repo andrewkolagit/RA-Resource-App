@@ -274,7 +274,7 @@ document.getElementById('feedbackForm').addEventListener('submit', function(even
 
         async function fetchStudentData() {
     const sNumber = document.getElementById('sNumberInput').value.trim();
-    const tableName = 'starrez'; // Replace with your table name
+    const tableName = 'studentid'; // Replace with your table name
     const url = `/.netlify/functions/fetchAirtable2?tableName=${tableName}&sNumber=${encodeURIComponent(sNumber)}`;
 
     const response = await fetch(url);
