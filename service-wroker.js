@@ -2,8 +2,6 @@ const CACHE_NAME = 'ra-app-cache-v1';
 const urlsToCache = [
     '/',
     '/index.html',
-    '/forms.html',
-    '/health.html',
     '/information.html',
     '/styles.css',
     '/icon-192x192.png',
