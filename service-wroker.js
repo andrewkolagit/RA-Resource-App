@@ -4,6 +4,7 @@ const urlsToCache = [
     '/index.html',
     '/information.html',
     '/styles.css',
+    'about.html',
     '/icon-192x192.png',
     '/icon-512x512.png',
 ];
