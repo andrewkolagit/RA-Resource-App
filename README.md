@@ -4,7 +4,7 @@ A web-based platform created to support Resident Assistants (RAs) in managing th
 \
 I developed this WebApp as a personal project during my Master’s program, inspired by my role as a Resident Assistant. It was originally built to support operations at my workplace and included additional features tailored to access forms. For privacy and data sensitivity reasons, some components have been removed from the public version.\
 \
-Please see Web App here: ra-resource-app.netlify.app/
+Please see Web App here: [ra-resource-app.netlify.app/](ra-resource-app.netlify.app/)
 
 ## 🛠 Features
 
